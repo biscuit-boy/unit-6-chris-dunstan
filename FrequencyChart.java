@@ -1,3 +1,5 @@
+import org.omg.CORBA.INTERNAL;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,13 +31,40 @@ public class FrequencyChart {
 
         ArrayList<Integer> nums = new ArrayList<>();
 
-        String input = "0";
+        int input;
 
-        while (isValid(input)){
-            
+        while (true){
+
             System.out.print("-> ");
-            input = scan.next();
+            try {
+                input = scan.nextInt();
+                nums.add(input);
+            }
+            catch (Exception e){
+                break;
+            }
+        }
 
+        return nums;
+    }
+
+    public static void display(ArrayList<Integer> nums){
+        int[] data = new int[10];
+        for (int i = 0; i < 10; ++i){
+            for (int num : nums){
+                if (num > i*10 && num < (i+1)*10){
+                    data[i]++;
+                }
+            }
+        }
+
+        System.out.print(" ");
+        for (int i = 0; i < 10; ++i){
+            System.out.print(" "+i*10+" - "+(i+1)*10+": ");
+            for (int k =0; k<data[i]; ++k){
+                System.out.print("*");
+            }
+            System.out.println();
         }
     }
 

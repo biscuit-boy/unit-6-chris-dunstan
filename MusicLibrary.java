@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class MusicLibrary {
-    private Album[] library;
+    private Album[] library = {};
 
     public MusicLibrary() {
     }
@@ -12,7 +12,7 @@ public class MusicLibrary {
         sort();
     }
 
-    public void addAllbum(Album album){
+    public void addAlbum(Album album){
         Album[] newLibrary = new Album[library.length + 1];
 
         for (int i = 0; i < library.length; ++i){
@@ -62,6 +62,49 @@ public class MusicLibrary {
         }
     }
 
+    public void add(Album album){
+        Album[] newLib = new Album[library.length + 1];
+
+        for (int i = 0; i < library.length; ++i){
+            newLib[i] = library[i];
+        }
+
+        newLib[library.length] = album;
+
+        library = newLib;
+
+        sort();
+    }
+
+    public void remove(int index){
+        Album[] newLib = new Album[library.length - 1];
+
+        int currInd = 0;
+        for (int i = 0; i < index; ++i){
+            if(i != index){
+                newLib[currInd] = library[i];
+                ++currInd;
+            }
+        }
+
+        library = newLib;
+
+        sort();
+    }
+
+    public void doubleSize(){}
+
+    public String toString(){
+        String res = "";
+
+        for (Album alb : library){
+            res += alb.toString() + "\n";
+        }
+
+        return res;
+    }
+
+    //linear search
     public int findAlbum(String title){
         for (int i = 0; i < library.length; ++i){
             if (library[i].getTitle().equals(title)){
@@ -72,6 +115,7 @@ public class MusicLibrary {
         return -1;
     }
 
+    //selection sort
     public void sortByTitle(){
         int min;
         Album temp;
@@ -89,7 +133,7 @@ public class MusicLibrary {
         }
     }
 
-    public void sortByAlbum(){}
+    
 }
 
 

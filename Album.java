@@ -2,9 +2,9 @@ public class Album implements Comparable {
     private String title;
     private String author;
     private double runTime;
-    private int tracks;
+    private double tracks;
 
-    public Album(String title, String author, double runTime, int tracks) {
+    public Album(String title, String author, double runTime, double tracks) {
         this.title = title;
         this.author = author;
         this.runTime = runTime;
@@ -45,11 +45,13 @@ public class Album implements Comparable {
         this.runTime = runTime;
     }
 
-    public int getTracks() {
+    public double getTracks() {
         return tracks;
     }
 
     public void setTracks(int tracks) {
         this.tracks = tracks;
     }
+
+
 }
